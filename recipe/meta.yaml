@@ -1,5 +1,5 @@
 {% set name = "lomap2" %}
-{% set version = "2.1.0" %}
+{% set version = "2.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/OpenFreeEnergy/Lomap/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b24cf523a983c933fd3e7d645bdab5bf2b0684f568d077d121435a2e525e6bbb
+  sha256: 2c8ce8cd1af098385830bcaef678a913b672e95142ec4659f9f1a87e46dd1acf
 
 build:
   noarch: python
