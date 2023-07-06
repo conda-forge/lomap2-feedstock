@@ -27,7 +27,7 @@ requirements:
     - numpy
     - python >=3.9
     - rdkit
-    - gufe >= 0.9.0
+    - gufe >=0.9.0
 
 test:
   imports:
