@@ -1,5 +1,5 @@
 {% set name = "lomap2" %}
-{% set version = "2.3.1" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -20,12 +20,12 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.6
+    - python >=3.8
   run:
     - matplotlib-base
     - networkx
     - numpy
-    - python >=3.6
+    - python >=3.8
     - rdkit
 
 test:
@@ -51,7 +51,7 @@ about:
     The aim of this project is to develop a new version of LOMAP based on 
     free avalaible APIs such as RDKit offering the scientific community 
     a free tool to plan in advance binding free energy calculations.
-  doc_url: https://github.com/OpenFreeEnergy/Lomap
+  doc_url: https://lomap.readthedocs.io/en/latest/
   dev_url: https://github.com/OpenFreeEnergy/Lomap
 
 extra:
