@@ -1,5 +1,5 @@
 {% set name = "lomap2" %}
-{% set version = "3.0.2" %}
+{% set version = "3.0.3" %}
 
 package:
   name: {{ name|lower }}
@@ -20,12 +20,12 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python
   run:
     - matplotlib-base
     - networkx
     - numpy
-    - python >=3.8
+    - python >=3.9
     - rdkit
     - gufe >=0.9
 
