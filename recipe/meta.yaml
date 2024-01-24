@@ -20,12 +20,12 @@ build:
 requirements:
   host:
     - pip
-    - python >=3.8
+    - python
   run:
     - matplotlib-base
     - networkx
     - numpy
-    - python >=3.8
+    - python >=3.9
     - rdkit
     - gufe >=0.9
 
