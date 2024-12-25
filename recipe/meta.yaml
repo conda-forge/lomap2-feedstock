@@ -12,7 +12,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   entry_points:
     - lomap = lomap.dbmol:startup
   script: {{ PYTHON }} -m pip install . -vv
@@ -20,12 +20,12 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
   run:
     - matplotlib-base
     - networkx
     - numpy
-    - python >=3.9
+    - python >={{ python_min }}
     - rdkit
     - gufe >=0.9
 
@@ -34,6 +34,7 @@ test:
     - lomap
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - lomap --help
