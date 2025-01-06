@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "lomap2" %}
 {% set version = "3.1.0" %}
 
@@ -59,6 +60,6 @@ about:
 extra:
   recipe-maintainers:
     - mikemhenry
-    - richardjgowers
+    - atravitz
     - IAlibay
     - dwhswenson
