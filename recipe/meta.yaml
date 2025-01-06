@@ -29,6 +29,7 @@ requirements:
     - python >={{ python_min }}
     - rdkit
     - gufe >=0.9
+    - netcdf4
 
 test:
   imports:
