@@ -1,3 +1,4 @@
+{% set python_min = '3.10' %}
 {% set name = "lomap2" %}
 {% set version = "3.1.0" %}
 
@@ -12,7 +13,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   entry_points:
     - lomap = lomap.dbmol:startup
   script: {{ PYTHON }} -m pip install . -vv
@@ -20,20 +21,22 @@ build:
 requirements:
   host:
     - pip
-    - python
+    - python {{ python_min }}
   run:
     - matplotlib-base
     - networkx
     - numpy
-    - python >=3.9
+    - python >={{ python_min }}
     - rdkit
     - gufe >=0.9
+    - netcdf4
 
 test:
   imports:
     - lomap
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - pip check
     - lomap --help
@@ -59,6 +62,6 @@ extra:
   recipe-maintainers:
     - atravitz
     - mikemhenry
-    - richardjgowers
+    - atravitz
     - IAlibay
     - dwhswenson
