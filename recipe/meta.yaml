@@ -13,7 +13,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   entry_points:
     - lomap = lomap.dbmol:startup
   script: {{ PYTHON }} -m pip install . -vv
@@ -28,7 +28,7 @@ requirements:
     - numpy
     - python >={{ python_min }}
     - rdkit
-    - gufe >=0.9
+    - gufe >=1.0
     - netcdf4
 
 test:
