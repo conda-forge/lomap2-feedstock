@@ -1,55 +1,125 @@
-{% set python_min = '3.10' %}
-{% set name = "lomap2" %}
-{% set version = "3.2.1" %}
+schema_version: 1
 
-package:
-  name: {{ name|lower }}
-  version: {{ version }}
+context:
+  python_min: "3.11"
+  name: "lomap2"
+  package_name: "lomap"
+  version: "3.3.0"
+
+recipe:
+  name: lomap2-suite
+  version: ${{ version }}
 
 source:
-  git_url: https://github.com/OpenFreeEnergy/Lomap.git
-  git_rev: v{{ version }}
-  git_depth: -1
+  url: https://github.com/OpenFreeEnergy/${{ name }}/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: 624cc8d71febd2e4d054456713670dd9993bd811e7ee5a02bab5ad134e38855b
 
 build:
-  noarch: python
-  number: 3
-  entry_points:
-    - lomap = lomap.dbmol:startup
-  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
-requirements:
-  host:
-    - pip
-    - python {{ python_min }}
-    - setuptools
-    - versioningit
-  run:
-    - matplotlib-base
-    - networkx
-    - numpy
-    - python >={{ python_min }}
-    - rdkit
-    - gufe ~=1.0
-    - netcdf4
-
-test:
-  imports:
-    - lomap
-  requires:
-    - pip
-    - python {{ python_min }}
-  commands:
-    - pip check
-    - lomap --help
-    - python -c "import lomap; assert(lomap.__version__ == '{{ version }}')"
+outputs:
+  - package:
+      name: lomap2-base
+    build:
+      noarch: python
+    script: SETUPTOOLS_SCM_PRETEND_VERSION=${{ version }} ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+    python:
+      entry_points:
+        - lomap = lomap.dbmol:startup
+    requirements:
+      host:
+        - pip
+        - python {{ python_min }}
+        - setuptools
+        - setuptools_scm
+      run:
+        - matplotlib-base
+        - networkx
+        - numpy
+        - python >={{ python_min }}
+        - rdkit >=2024
+    tests:
+      - python:
+        imports:
+          - lomap
+        pip_check: true
+        python_version: ${{ python_min }}
+      - requirements:
+          run:
+            - pip
+            - pytest-xdist
+            - python ${{ python_min }}.*
+          script:
+            - lomap --help
+            - python -c "import ${{ name }}; print(${{ name }}.__version__)"
+            - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
+            - pytest -v -n auto --pyargs lomap
+  - package:
+      name: lomap2
+    build:
+      noarch: python
+    requirements:
+      host:
+        - pip
+        - python {{ python_min }}
+        - setuptools
+        - setuptools_scm
+      run:
+        - gufe ~=1.0
+        - ${{ pin_subpackage('lomap2-base', exact=True) }}
+    tests:
+      - python:
+        imports:
+          - lomap
+        pip_check: true
+        python_version: ${{ python_min }}
+      - requirements:
+          run:
+            - pip
+            - pytest-xdist
+            - python ${{ python_min }}.*
+          script:
+            - lomap --help
+            - python -c "import ${{ name }}; print(${{ name }}.__version__)"
+            - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
+            - pytest -v -n auto --pyargs lomap
+  - package:
+      name: lomap2-extra
+    build:
+      noarch: python
+    requirements:
+      host:
+        - pip
+        - python {{ python_min }}
+        - setuptools
+        - setuptools_scm
+      run:
+        - pygraphviz
+        - ${{ pin_subpackage('lomap2', exact=True) }}        
+    tests:
+      - python:
+        imports:
+          - lomap
+        pip_check: true
+        python_version: ${{ python_min }}
+      - requirements:
+          run:
+            - pip
+            - pytest-xdist
+            - python ${{ python_min }}.*
+          script:
+            - lomap --help
+            - python -c "import ${{ name }}; print(${{ name }}.__version__)"
+            - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
+            - pytest -v -n auto --pyargs lomap
 
 about:
-  home: https://github.com/OpenFreeEnergy/Lomap
+  homepage: https://openfree.energy/
+  repository: https://github.com/OpenFreeEnergy/Lomap
+  documentation: https://lomap.openfree.energy/en/latest/
   license: MIT
-  license_family: MIT
   license_file: LICENCE.txt
-  summary: 'Alchemical mutation scoring map'
+  summary: Alchemical mutation scoring map
   description: |
     Lead optimization mapper (LOMAP) is an automated algorithm to plan efficient 
     relative free energy calculations between potential ligands within a 
@@ -58,10 +128,9 @@ about:
     The aim of this project is to develop a new version of LOMAP based on 
     free avalaible APIs such as RDKit offering the scientific community 
     a free tool to plan in advance binding free energy calculations.
-  doc_url: https://lomap.readthedocs.io/en/latest/
-  dev_url: https://github.com/OpenFreeEnergy/Lomap
 
 extra:
+  feedstock-name: lomap2
   recipe-maintainers:
     - atravitz
     - mikemhenry
