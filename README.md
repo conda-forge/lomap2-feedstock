@@ -3,7 +3,7 @@ About lomap2-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/lomap2-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/OpenFreeEnergy/Lomap
+Home: https://openfree.energy/
 
 Package license: MIT
 
@@ -11,25 +11,25 @@ Summary: Alchemical mutation scoring map
 
 Development: https://github.com/OpenFreeEnergy/Lomap
 
-Documentation: https://lomap.readthedocs.io/en/latest/
+Documentation: https://lomap.openfree.energy/en/latest/
 
-Lead optimization mapper (LOMAP) is an automated algorithm to plan efficient
-relative free energy calculations between potential ligands within a
-substantial of compounds. The original LOMAP code was mainly based
-on commercial APIs such as OpenEye and Schrodinger.
-The aim of this project is to develop a new version of LOMAP based on
-free avalaible APIs such as RDKit offering the scientific community
+Lead optimization mapper (LOMAP) is an automated algorithm to plan efficient 
+relative free energy calculations between potential ligands within a 
+substantial of compounds. The original LOMAP code was mainly based 
+on commercial APIs such as OpenEye and Schrodinger. 
+The aim of this project is to develop a new version of LOMAP based on 
+free avalaible APIs such as RDKit offering the scientific community 
 a free tool to plan in advance binding free energy calculations.
-
 
 Current build status
 ====================
 
 
-<table><tr><td>All platforms:</td>
+<table><tr>
+    <td>All platforms:</td>
     <td>
-      <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=15682&branchName=main">
-        <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/lomap2-feedstock?branchName=main">
+      <a href="https://github.com/conda-forge/lomap2-feedstock/actions/workflows/conda-build.yml">
+        <img src="https://github.com/conda-forge/lomap2-feedstock/actions/workflows/conda-build.yml/badge.svg?event=push&branch=main">
       </a>
     </td>
   </tr>
@@ -41,6 +41,8 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-lomap2-green.svg)](https://anaconda.org/conda-forge/lomap2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lomap2.svg)](https://anaconda.org/conda-forge/lomap2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lomap2.svg)](https://anaconda.org/conda-forge/lomap2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lomap2.svg)](https://anaconda.org/conda-forge/lomap2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-lomap2--base-green.svg)](https://anaconda.org/conda-forge/lomap2-base) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lomap2-base.svg)](https://anaconda.org/conda-forge/lomap2-base) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lomap2-base.svg)](https://anaconda.org/conda-forge/lomap2-base) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lomap2-base.svg)](https://anaconda.org/conda-forge/lomap2-base) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-lomap2--extra-green.svg)](https://anaconda.org/conda-forge/lomap2-extra) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/lomap2-extra.svg)](https://anaconda.org/conda-forge/lomap2-extra) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/lomap2-extra.svg)](https://anaconda.org/conda-forge/lomap2-extra) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/lomap2-extra.svg)](https://anaconda.org/conda-forge/lomap2-extra) |
 
 Installing lomap2
 =================
@@ -52,16 +54,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `lomap2` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `lomap2, lomap2-base, lomap2-extra` can be installed with `conda`:
 
 ```
-conda install lomap2
+conda install lomap2 lomap2-base lomap2-extra
 ```
 
 or with `mamba`:
 
 ```
-mamba install lomap2
+mamba install lomap2 lomap2-base lomap2-extra
 ```
 
 It is possible to list all of the versions of `lomap2` available on your platform with `conda`:
@@ -111,12 +113,12 @@ it is possible to build and upload installable packages to the
 [conda-forge](https://anaconda.org/conda-forge) [anaconda.org](https://anaconda.org/)
 channel for Linux, Windows and OSX respectively.
 
-To manage the continuous integration and simplify feedstock maintenance
+To manage the continuous integration and simplify feedstock maintenance,
 [conda-smithy](https://github.com/conda-forge/conda-smithy) has been developed.
 Using the ``conda-forge.yml`` within this repository, it is possible to re-render all of
 this feedstock's supporting files (e.g. the CI configuration files) with ``conda smithy rerender``.
 
-For more information please check the [conda-forge documentation](https://conda-forge.org/docs/).
+For more information, please check the [conda-forge documentation](https://conda-forge.org/docs/).
 
 Terminology
 ===========
@@ -143,7 +145,7 @@ merged, the recipe will be re-built and uploaded automatically to the
 everybody to install and use from the `conda-forge` channel.
 Note that all branches in the conda-forge/lomap2-feedstock are
 immediately built and any created packages are uploaded, so PRs should be based
-on branches in forks and branches in the main repository should only be used to
+on branches in forks, and branches in the main repository should only be used to
 build distinct package versions.
 
 In order to produce a uniquely identifiable distribution:
