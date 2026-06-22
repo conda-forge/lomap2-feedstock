@@ -49,11 +49,11 @@ outputs:
             - pip
             - pytest-xdist
             - python ${{ python_min }}.*
-          script:
-            - lomap --help
-            - python -c "import ${{ name }}; print(${{ name }}.__version__)"
-            - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
-            - pytest -v -n auto --pyargs lomap
+        script:
+          - lomap --help
+          - python -c "import ${{ name }}; print(${{ name }}.__version__)"
+          - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
+          - pytest -v -n auto --pyargs lomap
   - package:
       name: lomap2
     build:
@@ -78,11 +78,11 @@ outputs:
             - pip
             - pytest-xdist
             - python ${{ python_min }}.*
-          script:
-            - lomap --help
-            - python -c "import ${{ name }}; print(${{ name }}.__version__)"
-            - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
-            - pytest -v -n auto --pyargs lomap
+        script:
+          - lomap --help
+          - python -c "import ${{ name }}; print(${{ name }}.__version__)"
+          - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
+          - pytest -v -n auto --pyargs lomap
   - package:
       name: lomap2-extra
     build:
@@ -107,11 +107,11 @@ outputs:
             - pip
             - pytest-xdist
             - python ${{ python_min }}.*
-          script:
-            - lomap --help
-            - python -c "import ${{ name }}; print(${{ name }}.__version__)"
-            - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
-            - pytest -v -n auto --pyargs lomap
+        script:
+          - lomap --help
+          - python -c "import ${{ name }}; print(${{ name }}.__version__)"
+          - python -c "import ${{ name }}; assert(${{ name }}.__version__ == '${{ version }}')"
+          - pytest -v -n auto --pyargs lomap
 
 about:
   homepage: https://openfree.energy/
