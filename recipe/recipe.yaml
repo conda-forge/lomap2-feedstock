@@ -118,7 +118,7 @@ about:
   repository: https://github.com/OpenFreeEnergy/Lomap
   documentation: https://lomap.openfree.energy/en/latest/
   license: MIT
-  license_file: LICENCE.txt
+  license_file: LICENSE.txt
   summary: Alchemical mutation scoring map
   description: |
     Lead optimization mapper (LOMAP) is an automated algorithm to plan efficient 
