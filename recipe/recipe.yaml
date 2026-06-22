@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   python_min: "3.11"
-  name: "lomap2"
-  package_name: "lomap"
+  name: lomap2
+  package_name: lomap
   version: "3.3.0"
 
 recipe:
