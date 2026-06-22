@@ -40,10 +40,10 @@ outputs:
         - rdkit >=2024
     tests:
       - python:
-        imports:
-          - lomap
-        pip_check: true
-        python_version: ${{ python_min }}
+          imports:
+            - lomap
+          pip_check: true
+          python_version: ${{ python_min }}
       - requirements:
           run:
             - pip
@@ -69,10 +69,10 @@ outputs:
         - ${{ pin_subpackage('lomap2-base', exact=True) }}
     tests:
       - python:
-        imports:
-          - lomap
-        pip_check: true
-        python_version: ${{ python_min }}
+          imports:
+            - lomap
+          pip_check: true
+          python_version: ${{ python_min }}
       - requirements:
           run:
             - pip
@@ -98,10 +98,10 @@ outputs:
         - ${{ pin_subpackage('lomap2', exact=True) }}        
     tests:
       - python:
-        imports:
-          - lomap
-        pip_check: true
-        python_version: ${{ python_min }}
+          imports:
+            - lomap
+          pip_check: true
+          python_version: ${{ python_min }}
       - requirements:
           run:
             - pip
